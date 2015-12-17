@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Brightcove Player: Disabled Scrubber</title>
+    <style type="text/css">
+        
+        .video-js {
+          width: 640px;
+          height: 360px;
+        }
+        /* hide the big play button */
+/*
+        .video-js .vjs-big-play-button {
+            display: none;
+        }
+*/
+		/* this no longer works to hide big play button */
+		.vjs-big-play-button {
+            display: none;
+        }
+        /* turn off click events for the progress scrubber */
+/*
+        .vjs-progress-control{
+            pointer-events: none;
+        }
+*/
+
+        /* hide the progress scrubber but keep the element spacing */
+        .vjs-progress-control {
+            visibility: hidden;
+        }
+    </style>
+    
+</head>
+
+<body>
+    
+  <video
+    data-video-id="4029697544001"
+    data-account="1752604059001"
+    data-player="d3567cbf-fc4f-4e1f-b1e3-d8465d22769a"
+    data-embed="default"class="video-js" controls></video>
+  <script src="//players.brightcove.net/1752604059001/d3567cbf-fc4f-4e1f-b1e3-d8465d22769a_default/index.min.js"></script>
+
+
+</body>
+</html>

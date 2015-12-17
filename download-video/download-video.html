@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Download Video Player 5.x</title>
+	
+	<!-- Page styles -->
+	<style>
+        
+  </style>
+</head>
+ 
+<body>
+    
+<!--    player 2.2.0  with plugin -->
+     <video id="video_1"
+        style='width: 640px;height: 360px;'
+        data-account="1752604059001"
+        data-player="f56427db-aa67-44d2-8741-57da4e2dc95c"
+        data-embed="default"
+        data-video-id="4093643993001"
+
+        class="video-js" controls></video>
+      <script src="//players.brightcove.net/1752604059001/f56427db-aa67-44d2-8741-57da4e2dc95c_default/index.min.js"></script>
+ 
+
+<!--    <iframe src='//players.brightcove.net/1752604059001/59d9260f-7445-4789-9593-9a03b026f72d_default/index.html?videoId=4029697544001' allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>-->
+    
+  
+  <!-- custom script -->
+    <script type="text/JavaScript">
+        var myPlayer;
+
+        videojs("video_1").one('loadedmetadata', function(){
+            myPlayer = this;
+            console.log('catalog: ', myPlayer.catalog);
+            console.log('mediainfo: ', myPlayer.mediainfo);
+        });
+
+    </script>
+  
+</body>
+</html>

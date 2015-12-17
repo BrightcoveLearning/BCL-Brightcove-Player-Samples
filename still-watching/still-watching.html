@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Still Watching</title>
+	
+	<!-- Page styles -->
+	<style>
+    .hide-overlay .vjs-overlay {
+      display: none;
+    }
+    .vjs-overlay {
+      width: 100%;
+      color: #FFF;
+      background-color: rgba(255, 255, 255, 0.6);
+      left: 0;
+      font-size: 2em;
+      text-align: center;
+      cursor: pointer;
+    }
+    /* set player size */
+    .video-js {
+      width: 640px;
+      height: 360px;
+    }
+	</style>
+</head>
+ 
+<body>
+	<h1>Test 2.3.5 Player</h1>
+  
+<!--
+  <video id="video_1"
+      data-account="1752604059001"
+      data-player="52dc6cea-8bb6-4f19-b600-368a99fdaf57"
+      data-embed="default"
+      class="video-js" controls></video>
+	<script src="//players.brightcove.net/1752604059001/52dc6cea-8bb6-4f19-b600-368a99fdaf57_default/index.min.js"></script>
+-->
+<!--	test 2.3.5 Player-->
+	<video id="video_1"
+	  data-video-id="3851380732001"
+	  data-account="1752604059001"
+	  data-player="25719b15-0caf-4853-9c79-15f81ea928b4"
+	  data-embed="default" class="video-js" controls></video>
+	<script src="//players.brightcove.net/1752604059001/25719b15-0caf-4853-9c79-15f81ea928b4_default/index.min.js"></script>
+
+ 
+  
+  <p>Show "Are you still there?" message after <input id="timeCheckOption" value="5" size="5" style="width:20px;text-align:center;" /> seconds or <input id="videoCheckOption" value="2" size="5" style="width:20px;text-align:center;" /> videos. If the message is not clicked, pause the video after <input id="timeOutOption" value="5" size="5" style="width:20px;text-align:center;" /> seconds.</p>
+  
+  <fieldset>
+      <legend>Message Box</legend>
+      <p>Videos since last check: <span id="videosSinceLastCheck"></span></p>
+      <p>Time elapsed since last check: <span id="timeSinceLastCheck"></span> seconds</p>
+      <p>Current position: <span id="currentPosition"></span> seconds</p>
+  </fieldset>
+  
+  
+  
+  <!-- custom script -->
+	<script type="text/javascript" src="still-watching.js"></script>
+  <script>videojs('video_1').stillWatching();</script>
+  
+</body>
+</html>

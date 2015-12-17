@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Button Overlay</title>
+	
+	<!-- Page styles -->
+	<style>
+        /* override default styles for overlay */
+        .vjs-overlay,
+        .vjs-overlay.vjs-overlay-top {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            left: 0;
+            background: none;
+        }
+        
+        /* hide the overlay */
+        .hide-overlay .vjs-overlay {
+          display: none;
+        }
+        /* set player size */
+        .video-js {
+          width: 640px;
+          height: 360px;
+        }
+	</style>
+</head>
+ 
+<body>
+	<h1>Test 2.3.5 Player</h1>
+    
+<!--
+     <video id="video_1"
+      data-account="1752604059001"
+      data-player="ef5590c1-c497-4b39-b8d3-daf4203e5cb0"
+      data-embed="default"
+      data-video-id="4029697544001"
+      class="video-js" controls></video>
+-->
+	
+<!--	2.3.5 Player-->
+	
+	  <video id="video_1"
+	  data-account="1752604059001"
+	  data-player="ca13421c-baf7-4cfc-9f51-14b436e04589"
+	  data-embed="default"data-video-id="4029697544001"class="video-js" controls></video>
+
+	
+    <br/>
+    <input id="overlayButton" type="button" value="Toggle Overlay">
+	
+<!--	<script src="//players.brightcove.net/1752604059001/ef5590c1-c497-4b39-b8d3-daf4203e5cb0_default/index.min.js"></script>-->
+	<!--	2.3.5 Player-->
+	<script src="//players.brightcove.net/1752604059001/ca13421c-baf7-4cfc-9f51-14b436e04589_default/index.min.js"></script>
+    
+  
+    <!-- custom script -->
+    <script type="text/JavaScript">
+        var myPlayer,
+            overlayDisplayed,
+            eOverlayButton = document.getElementById("overlayButton");
+
+        videojs("video_1").ready(function(){
+            myPlayer = this;
+            
+            // initially hide the overlay
+            overlayDisplayed = false;
+			console.log("addClass to hide overlay");
+            myPlayer.addClass("hide-overlay");
+            
+            eOverlayButton.addEventListener("click",function(){
+                if (overlayDisplayed) {
+                    // hide the overlay
+                    overlayDisplayed = false;
+					console.log("addClass1 to hide overlay");
+                    myPlayer.addClass("hide-overlay");
+                } else {
+                    // show the overlay
+                    overlayDisplayed = true;
+					console.log("removeClass to show overlay");
+                    myPlayer.removeClass("hide-overlay");
+                }   
+                
+            });
+        }); 
+    </script>
+  
+</body>
+</html>

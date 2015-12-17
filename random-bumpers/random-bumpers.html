@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Random Bumpers</title>
+
+  <style>
+	.video-js {
+		  
+	}
+  </style>
+</head>
+<body>
+    
+<!--	old player-->
+<!--
+	<video id="video_1"
+	  style='width: 640px;height: 360px;'
+	  data-playlist-id="4450721964001"
+	  data-account="1752604059001"
+	  data-player="d4ee8356-c995-4bc6-b57d-aac115b26fa5"
+	  data-embed="default"
+	  class="video-js" controls></video>
+	<script src="//players.brightcove.net/1752604059001/d4ee8356-c995-4bc6-b57d-aac115b26fa5_default/index.min.js"></script>
+-->
+	
+<!--	no plugins player-->
+<!--
+	<video id="video_1"
+		 style='width: 640px;height: 360px;'
+	  data-playlist-id="4450721964001"
+	  data-account="1752604059001"
+	  data-player="5df7789d-df7d-4605-a677-952771f8e46b"
+	  data-embed="default"
+	  class="video-js" controls></video>
+	<script src="//players.brightcove.net/1752604059001/5df7789d-df7d-4605-a677-952771f8e46b_default/index.min.js"></script>
+-->
+
+
+<!--	player 2.3.5-->
+	<video id="video_1"
+		style='width: 640px;height: 360px;'
+	  data-playlist-id="4450721964001"
+	  data-account="1752604059001"
+	  data-player="1ee389cd-96cc-4e61-959d-55cc1043a460"
+	  data-embed="default"class="video-js" controls></video>
+	<script src="//players.brightcove.net/1752604059001/1ee389cd-96cc-4e61-959d-55cc1043a460_default/index.min.js"></script>
+
+ 
+
+	<script id="pageScript" type="text/javascript">
+        var myPlayer,
+            currentBumperIndex = 0,
+            currentBumperId,
+            bumperRandomNumber,
+            currentVideo,
+            currentVideoIndex = 0,
+            playlistLength = 0,
+            playlistDone = false,
+            playBumper = true,
+            firstTime = true,
+            bumperData = ["4446983083001","4446941103001","4446983090001","4447058684001","4446941108001","4446983094001"],
+            bumperDataLength = bumperData.length;
+     
+        videojs("video_1").ready(function(){
+            myPlayer = this;
+            
+            // listen for the "ended" event and play the next video or bumper
+            myPlayer.on("ended", function () {
+				console.log("ended event");
+                if (!playlistDone) {
+                    if (playBumper){
+                        playRandomBumper();
+                        playBumper = false;
+                    } else {
+                        playNextVideo(); 
+                        playBumper = true;
+                    }
+                }
+            });
+            // play first bumper
+            playRandomBumper();
+            playBumper = false;
+        }); 
+    
+        function playRandomBumper () {
+            // randomly select the bumper video to play
+			console.log("play random bumper video");
+            bumperRandomNumber = Math.floor(Math.random()*bumperDataLength);
+            currentBumperId = bumperData[bumperRandomNumber];
+            // get the video for the current randomly selected video Id
+            myPlayer.catalog.getVideo(currentBumperId, function(error, video) {
+                //deal with error
+                if (error) {
+                   console.log('error getting bumper', error); 
+                }
+                myPlayer.catalog.load(video);
+                myPlayer.play();
+            });
+        };
+        
+        function playNextVideo () {
+			console.log("playNextVideo");
+            if (firstTime) {
+                loadPlaylist();
+                firstTime = false;
+            } else {
+                if (currentVideoIndex >= playlistLength -1) {
+                    playlistDone = true;
+                } 
+                myPlayer.playlist.currentItem(currentVideoIndex);
+                myPlayer.play();
+            } 
+            currentVideoIndex += 1;
+        };	
+        
+        function loadPlaylist () {
+            myPlayer.catalog.getPlaylist('4450721964001', function(error, playlist){
+                myPlayer.catalog.load(playlist);
+                playlistLength = myPlayer.playlist().length;
+            });
+        };	
+    
+    </script>
+</body>
+</html>

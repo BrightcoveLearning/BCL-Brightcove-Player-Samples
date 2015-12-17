@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Lightbox Carousel Player</title>
+  <link rel="stylesheet" type="text/css" href="//solutions.brightcove.com/bcls/scripts/jQuery-Feature-Carousel/css/feature-carousel.css" />
+	
+	<!-- Page styles -->
+	<style id="pageStyles">
+      .player-block {
+        position: relative;
+      }  
+      /* styles for lightbox */
+      #BCLSlightbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        margin-left:0;
+        color: white;
+        text-align: center;
+        background-color: #333;
+        border-radius: 5px;
+        z-index:20;
+        overflow: hidden;
+        -webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
+        -moz-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
+        -ms-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
+        -o-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
+        transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
+      }
+      .BCLSshow {
+        width: 520px;
+        height: 310px;
+        padding: 10px;
+        -webkit-box-shadow:  10px 10px 10px 10px rgba(151, 151, 151, .7);
+        box-shadow:  10px 10px 10px 10px rgba(151, 151, 151, .7);
+      }
+      .BCLShide {
+        width: 0;
+        height: 0;
+        padding: 0;
+      }
+/*
+      .BrightcoveExperience {
+        margin-top: 10px;
+      }
+*/
+      .BCLSclose {
+        text-align: right;
+        margin-top: -2px;
+        text-decoration: underline;
+        color: #63A7CE;
+        width: 90%;
+        cursor: pointer;
+      }
+     /* styles for video selector */
+      #carousel-outer-container {
+        position: relative;
+        background-color: #F5F5F5;
+        width: 480px;
+        height: 250px;
+        padding: 5px;
+        border: 1px #999 solid;
+        border-radius: 5px;
+      }
+/*
+      #carousel-outer-container span{
+        padding-bottom: 0px;
+      }
+*/
+      #feature-carousel-container {
+        border: none;
+        background-color: #F5F5F5;
+        margin-top: 20px;
+        margin-bottom: 0;
+        padding: 5px;
+      }
+      #carousel-left img {
+        position: relative;
+        left: -20px;
+        top: 20px;
+      }
+      #carousel-right img {
+        position: relative;
+        left: 20px;
+        top: 20px;
+      }
+      div.carousel-caption {
+        padding: 0;
+        width: 200px;
+        height: 30px;
+        opacity: 70% !important;
+      }
+      div.carousel-caption p {
+        font-size: xx-small !important;
+        padding: 0;
+      }
+      .tracker-summation-container {
+        top: 185px;
+      }
+      .carousel-feature img {
+        cursor: pointer;
+      }
+	  #video_1 {
+		width: 480px;
+		height: 270px;
+		margin-left: 20px;
+		margin-top: 10px;
+	  }
+    </style>
+</head>
+
+<body>
+	<h1>Test 2.3.5 Player</h1>
+  <div>
+    <p>Bacon ipsum dolor sit amet landjaeger chuck pancetta, sausage boudin bresaola pig pork belly cow brisket swine ham hock. Spare ribs rump pancetta short loin pork belly, pork loin turkey meatloaf. </p>
+  </div>
+  
+  <!-- custom code for horizontal scroller and lightbox player -->
+     <div class="player-block"> 
+       <a id="but_prev">PREV</a> | <a id="but_pause">PAUSE</a> | <a id="but_start">START</a> | <a id="but_next">NEXT</a>
+      <!-- This is the container for the carousel -->
+      <div id="carousel-outer-container">
+        <div id="feature-carousel-container" class="well well-small">
+          <div id="feature-carousel" class="carousel" ></div>
+          <div id="carousel-left">
+             <img src="http://solutions.brightcove.com/bcls/scripts/jQuery-Feature-Carousel/images/arrow-left.png" />
+          </div>
+          <div id="carousel-right">
+            <img src="http://solutions.brightcove.com/bcls/scripts/jQuery-Feature-Carousel/images/arrow-right.png" />
+          </div>
+        </div>
+      </div>
+      <!-- lightbox block -->
+      <div id="BCLSlightbox" class="BCLShide">
+        
+<!--
+        <video id="video_1"
+          data-account="1752604059001"
+          data-player="188a7477-5a30-4f1e-ade9-8eba635bfa41"
+          data-embed="default"
+          class="video-js" controls></video>
+-->
+		  
+<!--		  Player 2.3.5-->
+		<video id="video_1"
+		  data-account="1752604059001"
+		  data-player="04f5c38a-6adf-47a3-b699-68533ffbdc01"
+		  data-embed="default"
+		  class="video-js" controls></video>
+ 
+		  
+		    <div id="BCLSclose" class="BCLSclose">Close</div>
+      </div>
+  </div>
+  
+<!--  <script src="//players.brightcove.net/1752604059001/188a7477-5a30-4f1e-ade9-8eba635bfa41_default/index.js"></script>-->
+	
+	<!--		  Player 2.3.5-->
+	<script src="//players.brightcove.net/1752604059001/04f5c38a-6adf-47a3-b699-68533ffbdc01_default/index.min.js"></script>
+		
+	<!-- bcl scripts ============================================================ -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+    <script src="/en/scripts/jquery.featureCarousel.js"></script>
+	
+    <script id="pageScript" type="text/javascript">
+      /******** Any scripts specific to page samples should go here *********/
+      /**** Brightcove Learning Services Module ****/
+//      var BCLS = (function() {
+        // variables
+        var myPlayer,
+            $lightbox = $("#BCLSlightbox"),
+            $carousel = $("#feature-carousel"),
+            $close = $(".BCLSclose"),
+            // vars for Handlebars
+            videosTemplate = "{{#each items}}<div class=\"carousel-feature\"><img alt=\"{{name}}\" class=\"carousel-image\" src=\"{{thumbnailURL}}\" width=\"180\" height=\"96\" data-id=\"{{id}}\" /><div class=\"carousel-caption\"><p>{{shortDescription}}</p></div></div>{{/each}}",
+            carouselNavigation = "<div id=\"carousel-left\"><img src=\"/en/scripts/jQuery-Feature-Carousel/images/arrow-left.png\" /></div><div id=\"carousel-right\"><img src=\"/en/scripts/jQuery-Feature-Carousel/images/arrow-right.png\" /></div>",
+            template,
+            data,
+            results,
+            i = 0,
+            max = 0,
+			currentVideo,
+//	    iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false ),
+			playlistData = 
+//				[
+				
+				{
+				"items": [
+					
+				{
+				"id":0,
+				"name":"Tiger", 
+				"shortDescription":"Tigers in the wild", 
+				"thumbnailURL":"//solutions.brightcove.com/bcls/assets/images/Tiger.jpg",
+				"sources":[
+					{
+					"type":"application/x-mpegURL",
+					"src":"http://solutions.brightcove.com/bcls/assets/videos/Tiger.m3u8"
+					},
+					{
+					"type":"video/mp4",
+					"src":"http://solutions.brightcove.com/bcls/assets/videos/Tiger.mp4"
+					}
+				    ]
+				},
+				{
+				"id":1,
+				"name":"Great Blue Heron",
+				"shortDescription":"The great blue heron", 
+				"thumbnailURL":"//solutions.brightcove.com/bcls/assets/images/Great-Blue-Heron.png",
+				"sources":[
+					{
+					"type":"application/x-mpegURL",
+					"src":"http://solutions.brightcove.com/bcls/assets/videos/Great-Blue-Heron.m3u8"
+					},
+					{
+					"type":"video/mp4",
+					"src":"http://solutions.brightcove.com/bcls/assets/videos/Great-Blue-Heron.mp4"
+					}
+				    ]	
+				},
+				{
+				"id":2,
+				"name":"Birds of a Feather",
+				"shortDescription":"A variety of birds", 
+				"thumbnailURL":"http://solutions.brightcove.com/bcls/assets/images/BirdsOfAFeather.png",
+				"sources":[
+					{
+					"type":"video/mp4",
+					"src":"http://solutions.brightcove.com/bcls/assets/videos/BirdsOfAFeather.mp4"
+					}
+				    ]	
+				},
+				{
+				"id":3,
+				"name":"Sea Marvels",
+				"shortDescription":"A collection of sea life", 
+				"thumbnailURL":"http://solutions.brightcove.com/bcls/assets/images/Sea Marvels.png",
+				"sources":[
+					{
+					"type":"video/mp4",
+					"src":"http://solutions.brightcove.com/bcls/assets/videos/Sea-Marvels.mp4"
+					}
+				    ]	
+				}
+					
+			]};
+					
+//		];
+			
+        // public functions and data
+//        return {
+		
+		  var buildPlaylistData = function () {
+			  
+			  console.log("here in build carousel");
+			  // build the related videos carousel
+			  template = Handlebars.compile(videosTemplate);
+			  results = template(playlistData);
+			  $carousel.prepend(results);
+			  // instantiate the carousel
+			  $carousel.featureCarousel({
+				  smallFeatureWidth:    .7,
+				  smallFeatureHeight:		.7,
+				  "trackerIndividual" : false
+			  });
+			  console.log("carousel instantiated");
+				// add event listener for clicks on videos
+				$(".carousel-image").on("click", showAndLoad);
+				$("#but_prev").click(function () {
+				  $carousel.prev();
+				});
+				$("#but_pause").click(function () {
+				  $carousel.pause();
+				});
+				$("#but_start").click(function () {
+				  $carousel.start();
+				});
+				$("#but_next").click(function () {
+				  $carousel.next();
+				});
+				$close.on("click", hideAndStop);
+			  
+			   // let the video selector know the player is loaded
+			   playerLoaded = true;
+			};
+		
+			var showAndLoad = function (videoID) {
+				// make sure the player is loaded
+				if (playerLoaded) {
+				  // load the video
+				  currentVideo = $(this).attr("data-id");
+				  myPlayer.src(playlistData.items[currentVideo].sources);
+				  // reveal the lightbox
+				  $lightbox.attr("class", "BCLSshow");
+				  // play the video
+				  myPlayer.play();
+				}
+			  };
+		
+			var hideAndStop = function () {
+				// pause the video
+				myPlayer.pause();
+				
+				// hide the lightbox
+				$lightbox.attr("class", "BCLShide");
+			};
+		
+		  videojs("video_1").ready(function(){
+            myPlayer = this;
+			buildPlaylistData();
+
+          }); 
+		
+	</script>
+</body>
+
+</html>

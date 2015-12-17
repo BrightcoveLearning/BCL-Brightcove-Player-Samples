@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Featured Playlist</title>
+	
+	<!-- Page styles -->
+	<style>
+        /* set player size */
+        .video-js {
+          width: 640px;
+          height: 360px;
+        }
+	</style>
+</head>
+ 
+<body>
+<!--  	old playlist player with plugin-->
+<!--
+    <video
+      data-playlist-id="2764931906001"
+      data-account="1752604059001"
+      data-player="bddbd9b4-a816-439c-8d5a-37dcebac2059"
+      data-embed="default"
+      data-featured-video-id="2026627035001"
+      class="video-js" controls></video>
+    <script src="//players.brightcove.net/1752604059001/bddbd9b4-a816-439c-8d5a-37dcebac2059_default/index.min.js"></script>
+    <ol class="vjs-playlist"></ol>  
+-->
+	
+	<video id="video_1"
+		style='width: 640px;height: 360px;'
+	  data-playlist-id="4450721964001"
+	  data-account="1752604059001"
+	  data-player="cee8539a-91ed-46ed-868c-77e2114dd4e5"
+	  data-embed="default"
+	  data-featured-video-id="4451061613001"
+	  class="video-js" controls></video>
+	<script src="//players.brightcove.net/1752604059001/cee8539a-91ed-46ed-868c-77e2114dd4e5_default/index.min.js"></script>
+	<ol class="vjs-playlist"></ol>
+    
+<!--    water drop: data-featured-video-id="1754261438001" no -->
+<!--    sea turtle: data-featured-video-id="1754276205001" yes, but this is the first video in playlist -->
+<!--    sea clownfish: data-featured-video-id="1754261691001" no -->
+<!--    birds of a feather: data-featured-video-id="2026627035001"-->
+<!--	    sea lionfish: 4451061613001-->
+	
+	<script type="text/javascript" src="playlist.js"></script>
+    <script>videojs('video_1').featured();</script>
+  
+</body>
+</html>
