@@ -1,30 +1,9 @@
 {
+  "content": "<iframe src=\"registration-form.html\"></iframe>",
   "overlays": [
     {
-      "end": "play",
+      "content": "<iframe src=\"registration-form.html\"></iframe>",
       "start": "loadstart",
-      "content": "<iframe src=\"//solutions.brightcove.com/bcls/brightcove-player/register-to-play/message.html\"></iframe>"
-    }
-  ],
-  "content": "<iframe src=\"//solutions.brightcove.com/bcls/brightcove-player/register-to-play/message.html\"></iframe>"
-}
-{
-  "overlays": [
-    {
-      "end": "play",
-      "start": "loadstart",
-      "content": "<iframe src=\"//your-domain.com/registration-form.html\"></iframe>"
-    }
-  ],
-  "content": "<iframe src=\"//your-domain.com/registration-form.html\"></iframe>"
-}
-
-{
-  "content": "<iframe src=\"//solutions.brightcove.com/bcls/brightcove-player/register-to-play/message.html\"></iframe>",
-  "overlays": [
-    {
-      "content": "<iframe src=\"//solutions.brightcove.com/bcls/brightcove-player/register-to-play/message.html\"></iframe>",
-      "start": 3,
       "end": "play"
     }
   ]
