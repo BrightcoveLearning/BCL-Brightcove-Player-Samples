@@ -2,15 +2,15 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>Lightbox Carousel Player</title>
-  <link rel="stylesheet" type="text/css" href="//solutions.brightcove.com/bcls/scripts/jQuery-Feature-Carousel/css/feature-carousel.css" />
-	
-	<!-- Page styles -->
-	<style id="pageStyles">
+    <meta charset="UTF-8">
+    <title>Lightbox Carousel Player</title>
+  <link rel="stylesheet" type="text/css" href="//docs.brightcove.com/en/scripts/jQuery-Feature-Carousel/css/feature-carousel.css" />
+
+    <!-- Page styles -->
+    <style id="pageStyles">
       .player-block {
         position: relative;
-      }  
+      }
       /* styles for lightbox */
       #BCLSlightbox {
         position: absolute;
@@ -103,39 +103,39 @@
       .carousel-feature img {
         cursor: pointer;
       }
-	  #video_1 {
-		width: 480px;
-		height: 270px;
-		margin-left: 20px;
-		margin-top: 10px;
-	  }
+      #video_1 {
+        width: 480px;
+        height: 270px;
+        margin-left: 20px;
+        margin-top: 10px;
+      }
     </style>
 </head>
 
 <body>
-	<h1>Test 2.3.5 Player</h1>
+    <h1>Test 2.3.5 Player</h1>
   <div>
     <p>Bacon ipsum dolor sit amet landjaeger chuck pancetta, sausage boudin bresaola pig pork belly cow brisket swine ham hock. Spare ribs rump pancetta short loin pork belly, pork loin turkey meatloaf. </p>
   </div>
-  
+
   <!-- custom code for horizontal scroller and lightbox player -->
-     <div class="player-block"> 
+     <div class="player-block">
        <a id="but_prev">PREV</a> | <a id="but_pause">PAUSE</a> | <a id="but_start">START</a> | <a id="but_next">NEXT</a>
       <!-- This is the container for the carousel -->
       <div id="carousel-outer-container">
         <div id="feature-carousel-container" class="well well-small">
           <div id="feature-carousel" class="carousel" ></div>
           <div id="carousel-left">
-             <img src="http://solutions.brightcove.com/bcls/scripts/jQuery-Feature-Carousel/images/arrow-left.png" />
+             <img src="//docs.brightcove.com/en/scripts/jQuery-Feature-Carousel/images/arrow-left.png" alt="left arrow" />
           </div>
           <div id="carousel-right">
-            <img src="http://solutions.brightcove.com/bcls/scripts/jQuery-Feature-Carousel/images/arrow-right.png" />
+            <img src="//docs.brightcove.com/en/scripts/jQuery-Feature-Carousel/images/arrow-right.png" alt="right arrow" />
           </div>
         </div>
       </div>
       <!-- lightbox block -->
       <div id="BCLSlightbox" class="BCLShide">
-        
+
 <!--
         <video id="video_1"
           data-account="1752604059001"
@@ -143,29 +143,29 @@
           data-embed="default"
           class="video-js" controls></video>
 -->
-		  
+
 <!--		  Player 2.3.5-->
-		<video id="video_1"
-		  data-account="1752604059001"
-		  data-player="04f5c38a-6adf-47a3-b699-68533ffbdc01"
-		  data-embed="default"
-		  class="video-js" controls></video>
- 
-		  
-		    <div id="BCLSclose" class="BCLSclose">Close</div>
+        <video id="video_1"
+          data-account="1752604059001"
+          data-player="04f5c38a-6adf-47a3-b699-68533ffbdc01"
+          data-embed="default"
+          class="video-js" controls></video>
+
+
+            <div id="BCLSclose" class="BCLSclose">Close</div>
       </div>
   </div>
-  
+
 <!--  <script src="//players.brightcove.net/1752604059001/188a7477-5a30-4f1e-ade9-8eba635bfa41_default/index.js"></script>-->
-	
-	<!--		  Player 2.3.5-->
-	<script src="//players.brightcove.net/1752604059001/04f5c38a-6adf-47a3-b699-68533ffbdc01_default/index.min.js"></script>
-		
-	<!-- bcl scripts ============================================================ -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-    <script src="/en/scripts/jquery.featureCarousel.js"></script>
-	
+
+    <!--		  Player 2.3.5-->
+    <script src="//players.brightcove.net/1752604059001/04f5c38a-6adf-47a3-b699-68533ffbdc01_default/index.min.js"></script>
+
+    <!-- bcl scripts ============================================================ -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+    <script src="//docs.brightcove.com/en/scripts/jQuery-Feature-Carousel/js/jquery.featureCarousel.js"></script>
+
     <script id="pageScript" type="text/javascript">
       /******** Any scripts specific to page samples should go here *********/
       /**** Brightcove Learning Services Module ****/
@@ -183,140 +183,140 @@
             results,
             i = 0,
             max = 0,
-			currentVideo,
+            currentVideo,
 //	    iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false ),
-			playlistData = 
+            playlistData =
 //				[
-				
-				{
-				"items": [
-					
-				{
-				"id":0,
-				"name":"Tiger", 
-				"shortDescription":"Tigers in the wild", 
-				"thumbnailURL":"//solutions.brightcove.com/bcls/assets/images/Tiger.jpg",
-				"sources":[
-					{
-					"type":"application/x-mpegURL",
-					"src":"http://solutions.brightcove.com/bcls/assets/videos/Tiger.m3u8"
-					},
-					{
-					"type":"video/mp4",
-					"src":"http://solutions.brightcove.com/bcls/assets/videos/Tiger.mp4"
-					}
-				    ]
-				},
-				{
-				"id":1,
-				"name":"Great Blue Heron",
-				"shortDescription":"The great blue heron", 
-				"thumbnailURL":"//solutions.brightcove.com/bcls/assets/images/Great-Blue-Heron.png",
-				"sources":[
-					{
-					"type":"application/x-mpegURL",
-					"src":"http://solutions.brightcove.com/bcls/assets/videos/Great-Blue-Heron.m3u8"
-					},
-					{
-					"type":"video/mp4",
-					"src":"http://solutions.brightcove.com/bcls/assets/videos/Great-Blue-Heron.mp4"
-					}
-				    ]	
-				},
-				{
-				"id":2,
-				"name":"Birds of a Feather",
-				"shortDescription":"A variety of birds", 
-				"thumbnailURL":"http://solutions.brightcove.com/bcls/assets/images/BirdsOfAFeather.png",
-				"sources":[
-					{
-					"type":"video/mp4",
-					"src":"http://solutions.brightcove.com/bcls/assets/videos/BirdsOfAFeather.mp4"
-					}
-				    ]	
-				},
-				{
-				"id":3,
-				"name":"Sea Marvels",
-				"shortDescription":"A collection of sea life", 
-				"thumbnailURL":"http://solutions.brightcove.com/bcls/assets/images/Sea Marvels.png",
-				"sources":[
-					{
-					"type":"video/mp4",
-					"src":"http://solutions.brightcove.com/bcls/assets/videos/Sea-Marvels.mp4"
-					}
-				    ]	
-				}
-					
-			]};
-					
+
+                {
+                "items": [
+
+                {
+                "id":0,
+                "name":"Tiger",
+                "shortDescription":"Tigers in the wild",
+                "thumbnailURL":"//solutions.brightcove.com/bcls/assets/images/Tiger.jpg",
+                "sources":[
+                    {
+                    "type":"application/x-mpegURL",
+                    "src":"http://solutions.brightcove.com/bcls/assets/videos/Tiger.m3u8"
+                    },
+                    {
+                    "type":"video/mp4",
+                    "src":"http://solutions.brightcove.com/bcls/assets/videos/Tiger.mp4"
+                    }
+                    ]
+                },
+                {
+                "id":1,
+                "name":"Great Blue Heron",
+                "shortDescription":"The great blue heron",
+                "thumbnailURL":"//solutions.brightcove.com/bcls/assets/images/Great-Blue-Heron.png",
+                "sources":[
+                    {
+                    "type":"application/x-mpegURL",
+                    "src":"http://solutions.brightcove.com/bcls/assets/videos/Great-Blue-Heron.m3u8"
+                    },
+                    {
+                    "type":"video/mp4",
+                    "src":"http://solutions.brightcove.com/bcls/assets/videos/Great-Blue-Heron.mp4"
+                    }
+                    ]
+                },
+                {
+                "id":2,
+                "name":"Birds of a Feather",
+                "shortDescription":"A variety of birds",
+                "thumbnailURL":"http://solutions.brightcove.com/bcls/assets/images/BirdsOfAFeather.png",
+                "sources":[
+                    {
+                    "type":"video/mp4",
+                    "src":"http://solutions.brightcove.com/bcls/assets/videos/BirdsOfAFeather.mp4"
+                    }
+                    ]
+                },
+                {
+                "id":3,
+                "name":"Sea Marvels",
+                "shortDescription":"A collection of sea life",
+                "thumbnailURL":"http://solutions.brightcove.com/bcls/assets/images/Sea Marvels.png",
+                "sources":[
+                    {
+                    "type":"video/mp4",
+                    "src":"http://solutions.brightcove.com/bcls/assets/videos/Sea-Marvels.mp4"
+                    }
+                    ]
+                }
+
+            ]};
+
 //		];
-			
+
         // public functions and data
 //        return {
-		
-		  var buildPlaylistData = function () {
-			  
-			  console.log("here in build carousel");
-			  // build the related videos carousel
-			  template = Handlebars.compile(videosTemplate);
-			  results = template(playlistData);
-			  $carousel.prepend(results);
-			  // instantiate the carousel
-			  $carousel.featureCarousel({
-				  smallFeatureWidth:    .7,
-				  smallFeatureHeight:		.7,
-				  "trackerIndividual" : false
-			  });
-			  console.log("carousel instantiated");
-				// add event listener for clicks on videos
-				$(".carousel-image").on("click", showAndLoad);
-				$("#but_prev").click(function () {
-				  $carousel.prev();
-				});
-				$("#but_pause").click(function () {
-				  $carousel.pause();
-				});
-				$("#but_start").click(function () {
-				  $carousel.start();
-				});
-				$("#but_next").click(function () {
-				  $carousel.next();
-				});
-				$close.on("click", hideAndStop);
-			  
-			   // let the video selector know the player is loaded
-			   playerLoaded = true;
-			};
-		
-			var showAndLoad = function (videoID) {
-				// make sure the player is loaded
-				if (playerLoaded) {
-				  // load the video
-				  currentVideo = $(this).attr("data-id");
-				  myPlayer.src(playlistData.items[currentVideo].sources);
-				  // reveal the lightbox
-				  $lightbox.attr("class", "BCLSshow");
-				  // play the video
-				  myPlayer.play();
-				}
-			  };
-		
-			var hideAndStop = function () {
-				// pause the video
-				myPlayer.pause();
-				
-				// hide the lightbox
-				$lightbox.attr("class", "BCLShide");
-			};
-		
-		  videojs("video_1").ready(function(){
-            myPlayer = this;
-			buildPlaylistData();
 
-          }); 
-		
-	</script>
+          var buildPlaylistData = function () {
+
+              console.log("here in build carousel");
+              // build the related videos carousel
+              template = Handlebars.compile(videosTemplate);
+              results = template(playlistData);
+              $carousel.prepend(results);
+              // instantiate the carousel
+              $carousel.featureCarousel({
+                  smallFeatureWidth:    .7,
+                  smallFeatureHeight:		.7,
+                  "trackerIndividual" : false
+              });
+              console.log("carousel instantiated");
+                // add event listener for clicks on videos
+                $(".carousel-image").on("click", showAndLoad);
+                $("#but_prev").click(function () {
+                  $carousel.prev();
+                });
+                $("#but_pause").click(function () {
+                  $carousel.pause();
+                });
+                $("#but_start").click(function () {
+                  $carousel.start();
+                });
+                $("#but_next").click(function () {
+                  $carousel.next();
+                });
+                $close.on("click", hideAndStop);
+
+               // let the video selector know the player is loaded
+               playerLoaded = true;
+            };
+
+            var showAndLoad = function (videoID) {
+                // make sure the player is loaded
+                if (playerLoaded) {
+                  // load the video
+                  currentVideo = $(this).attr("data-id");
+                  myPlayer.src(playlistData.items[currentVideo].sources);
+                  // reveal the lightbox
+                  $lightbox.attr("class", "BCLSshow");
+                  // play the video
+                  myPlayer.play();
+                }
+              };
+
+            var hideAndStop = function () {
+                // pause the video
+                myPlayer.pause();
+
+                // hide the lightbox
+                $lightbox.attr("class", "BCLShide");
+            };
+
+          videojs("video_1").ready(function(){
+            myPlayer = this;
+            buildPlaylistData();
+
+          });
+
+    </script>
 </body>
 
 </html>
