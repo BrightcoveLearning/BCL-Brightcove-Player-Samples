@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Testing </title>
+  <!-- styles for page -->
+    <style>
+    .video-js {
+      height: 344px;
+      width: 610px;
+    }
+    /* Do not hide the control bar */
+    #myPlayerID .vjs-control-bar {
+      transform: none;
+    }
+    /* Style the download icon */
+    #downloadButton {
+        width: 34px;
+        height: 33px;
+        margin-top: 6px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <video id="myPlayerID"
+    data-video-id="4607357817001"
+    data-account="1752604059001"
+    data-player="a4d24ff5-a5bb-4bc2-bcdd-c5b93482f459"
+    data-embed="default"
+    class="video-js" controls=""></video>
+  <script src="//players.brightcove.net/1752604059001/a4d24ff5-a5bb-4bc2-bcdd-c5b93482f459_default/index.min.js"></script>
+
+  <script type="text/javascript">
+    videojs('myPlayerID').ready(function(){
+      // Create variables and new div, anchor and image for download icon
+      var myPlayer = this,
+        controlBar,
+        newElement = document.createElement('div'),
+        newLink = document.createElement('a'),
+        newImage = document.createElement('img');
+
+      // Assing id and classes to div for icon
+      newElement.id = 'downloadButton';
+      newElement.className = 'downloadStyle vjs-control';
+
+      // Assign properties to elements and assing to parents
+      newImage.setAttribute('src','http://solutions.brightcove.com/bcls/brightcove-player/download-video/file-download.png');
+      newLink.setAttribute('href','http://www.brightcove.com');
+      newLink.appendChild(newImage);
+      newElement.appendChild(newLink);
+
+      // Get control bar and insert before elements
+      // Remember that getElementsByClassName() returns an array
+      controlBar = document.getElementsByClassName('vjs-control-bar')[0];
+
+      // Change the class name here to move the icon in the controlBar
+      insertBeforeNode = document.getElementsByClassName('vjs-volume-menu-button')[0];
+
+      // Insert the icon div in proper location
+      controlBar.insertBefore(newElement,insertBeforeNode);
+    });
+  </script>
+
+</body>
+
+</html>
