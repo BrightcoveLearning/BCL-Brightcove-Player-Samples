@@ -37,8 +37,6 @@ videojs.plugin('customPlaylist', function (options) {
             videoItem,
             playerWidth = isDefined(options.width) ? options.width : myPlayer.width(),
             playerHeight = (9 / 16) * playerWidth;
-            console.log(playerWidth);
-            console.log(playerHeight);
         /**
          * removes highlight from all playlist items
          */
