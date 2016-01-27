@@ -35,7 +35,7 @@ videojs.plugin('customPlaylist', function (options) {
             itemTitle,
             playlistData = myPlayer.playlist(),
             videoItem,
-            playerWidth = myPlayer.width(),
+            playerWidth = isDefined(options.width) ? options.width : myPlayer.width(),
             playerHeight = (9 / 16) * playerWidth;
 
         /**
