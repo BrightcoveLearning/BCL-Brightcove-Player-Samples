@@ -262,7 +262,7 @@
                     videoIds = [],
                     videoList,
                     overlayDiv = createEl('div', {id: 'bclsOverlay'});
-                player.catalog.getVideo(player.options()['data-video-id'], function(error, video) {
+                player.catalog.getVideo(player.el().getAttribute('data-video-id'), function(error, video) {
                     //deal with error
                     // console.log('error', error);
                     player.catalog.load(video);
