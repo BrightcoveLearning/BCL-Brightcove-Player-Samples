@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Download Video Player 5.x</title>
+  
+  <style type="text/css">
+    /* Order elements in the control bar to place a download button after the fullscreen button. */
+    .downloadStyle {
+        order: 9;
+        -webkit-box-ordinal-group: 9;
+        -moz-box-ordinal-group: 9;
+        -webkit-order: 9;
+        -ms-flex-order: 9;
+        padding-top: 7px;
+    }
+    #downloadButton {
+        width: 34px;
+        padding-top: 7px;
+        text-align: center;
+    }
+  </style>
+</head>
+ 
+<body>
+  
+  <video id="myPlayerID" style="width: 640px; height: 360px;" 
+         data-video-id="4093643993001" 
+         data-account="1752604059001" 
+         data-player="a5e43ee4-abe5-439c-8ff7-0f8c40cd287b" 
+         data-embed="default" 
+         class="video-js" controls=""></video>
+  
+  <script src="//players.brightcove.net/1752604059001/a5e43ee4-abe5-439c-8ff7-0f8c40cd287b_default/index.min.js"></script>
+ 
+  
+  <!-- custom script -->
+  
+  <script type="text/javascript">
+    videojs("myPlayerID").ready(function() {
+      var myPlayer = this,
+        videoID,
+        videoName,
+        totalRenditions,
+        mp4Ara=[],
+        highestQuality,
+        controlBar,
+        newElement;
+        
+      videoID = myPlayer.options()['data-video-id'];
+      myPlayer.catalog.getVideo(videoID, function(error, video) {
+        myPlayer.catalog.load(video);
+        videoName = myPlayer.mediainfo['name'];
+        rendtionsAra = myPlayer.mediainfo.sources;
+        totalRenditions = rendtionsAra.length;
+        for (var i = 0; i < totalRenditions; i++) {
+          if (rendtionsAra[i].container === "MP4" && rendtionsAra[i].hasOwnProperty('src')) {
+            mp4Ara.push(rendtionsAra[i]);
+          };
+        };
+        mp4Ara.sort( function (a,b){
+          return b.size - a.size;
+        });
+        highestQuality= mp4Ara[0].src;
+        newElement = document.createElement('div');
+        newElement.id = 'downloadButton';
+        newElement.className = 'downloadStyle vjs-control';
+        newElement.innerHTML = "<a href='" + highestQuality + "' download='" + videoName + "'><img src='http://solutions.brightcove.com/bcls/brightcove-player/download-video/file-download.png' /></a>";
+        controlBar = document.getElementsByClassName('vjs-control-bar');
+        controlBar[0].appendChild(newElement);
+      });
+    });
+  </script>
+  
+</body>
+</html>
