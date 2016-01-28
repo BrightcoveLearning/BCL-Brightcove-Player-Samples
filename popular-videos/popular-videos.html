@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Popular Video Overlay</title>
     <style>
         body {
             margin: 1em 2em;
@@ -38,10 +38,10 @@
         }
 
     </style>
+    <link href="//players.brightcove.net/videojs-overlay/lib/videojs-overlay.css" rel='stylesheet'>
 </head>
 
 <body>
-    <link href="//players.brightcove.net/videojs-overlay/lib/videojs-overlay.css" rel='stylesheet'>
     <h1>Popular Videos Overlay</h1>
     <div style="display: block; position: relative; max-width: 600px;">
         <div style="display: block; padding-top: 56.25%;">
@@ -76,8 +76,6 @@
                 // this var needs to be in the function scope because
                 // multiple functions will access it
                 videoData = [];
-            // launch the controller function to kick things off
-            init();
 
             /**
              * loads and plays a video
@@ -257,48 +255,43 @@
             /**
              * acts as a controller for the rest of the script
              */
-            function init() {
+            player.one('loadstart', function() {
                 var requestData = {},
                     videoIds = [],
                     videoList,
                     overlayDiv = createEl('div', {id: 'bclsOverlay'});
-                player.catalog.getVideo(player.el().getAttribute('data-video-id'), function(error, video) {
-                    //deal with error
-                    // console.log('error', error);
-                    player.catalog.load(video);
-                    // add the overlay
-                    player.overlay({
-                        overlays: [
-                            {
-                                align: 'top',
-                                content: overlayDiv,
-                                start: 'pause',
-                                end: 'play'
-                            },
-                            {
-                                align: 'top',
-                                content: overlayDiv,
-                                start: 'ended',
-                                end: 'play'
-                            }
-                        ]
-                    });
-                    // set up data for Analytics API request
-                    requestData = setRequestData();
-                    // make the Analytics API request
-                    getAnalyticsData(requestData, function (analyticsData) {
-                        // extract the video ids into an array
-                        videoIds = extractVideoIds(analyticsData);
-                        // use the catalog to get the video data
-                        getVideoData(videoIds, function () {
-                            // generate the HTML for the overlay
-                            videoList = createVideoList(videoData);
-                            // add the overlay
-                            overlayDiv.appendChild(videoList);
-                        });
+                // add the overlay
+                player.overlay({
+                    overlays: [
+                        {
+                            align: 'top',
+                            content: overlayDiv,
+                            start: 'pause',
+                            end: 'play'
+                        },
+                        {
+                            align: 'top',
+                            content: overlayDiv,
+                            start: 'ended',
+                            end: 'play'
+                        }
+                    ]
+                });
+                // set up data for Analytics API request
+                requestData = setRequestData();
+                // make the Analytics API request
+                getAnalyticsData(requestData, function (analyticsData) {
+                    // extract the video ids into an array
+                    videoIds = extractVideoIds(analyticsData);
+                    // use the catalog to get the video data
+                    getVideoData(videoIds, function () {
+                        // generate the HTML for the overlay
+                        videoList = createVideoList(videoData);
+                        // add the overlay
+                        overlayDiv.appendChild(videoList);
                     });
                 });
-            }
+            });
         });
     </script>
 </body>
